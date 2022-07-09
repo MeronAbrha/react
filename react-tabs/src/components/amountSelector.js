@@ -2,12 +2,12 @@ import {useState} from 'react';
 import './amountSelector.scss'
 
 export const  AmountSelector = () => {
-    const [showCustomeInput, setCustomeInput] = useState()
-    const [active, showActive] = useState(false)
+    const [showCustomeInput, setCustomeInput] = useState(true)
+    const [active, showActive] = useState(0)
     const amountList = ['Custom', 50, 100, 200, 250]
 
     const handleClick = (index) => {
-        showActive(true)
+        showActive(index)
         index === 0 ? 
             setCustomeInput(true): setCustomeInput(false)
 
@@ -23,7 +23,7 @@ export const  AmountSelector = () => {
         return (
             <button 
                 type="radio"  
-                className={ active ? 'btn-active' : 'btn-not-active'}  
+                className={ active === index ? 'btn-active' : 'btn-not-active'}  
                 key={`${element}`} 
                 onClick={() => handleClick(index)}>
                     {element}
